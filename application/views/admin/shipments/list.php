@@ -52,7 +52,7 @@
               <td><?= $data['user_name']; ?></td>
 
               <td><div class="btn-group pull-right">
-                <a href="<?= base_url('admin/shipments/view/'.$data['id']); ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                <!-- <a href="<?= base_url('admin/shipments/view/'.$data['id']); ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> -->
                 <a href="<?= base_url('admin/shipments/edit/'.$data['id']); ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
               </div></td>
   		      </tr>
