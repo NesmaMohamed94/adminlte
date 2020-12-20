@@ -35,6 +35,7 @@
 					'vshipment_id' => random_string('numeric',14),
 					'trans_type' => $this->input->post('trans_type'),
 					'description' => $this->input->post('description'),
+					'critical' => $this->input->post('critical'),
 					'cod' => $this->input->post('cod'),
 					'numpc' => $this->input->post('numpc'),
 					'vendor_id' => $this->input->post('vendor_id'),
@@ -75,8 +76,10 @@
 					'customer_zipcode' => $this->input->post('customer_zipcode'),
 					'customer_building' => $this->input->post('customer_building'),
 					'customer_extra' => $this->input->post('customer_extra'),
-					'delivery_date' => date('Y-m-d', strtotime($this->input->post('delivery_date'))),
-					'received_date' => date('Y-m-d', strtotime($this->input->post('received_date'))),
+					'delivery_date' => date('Y-m-d h:m:s'),
+					'received_date' =>date('Y-m-d h:m:s'),
+					// 'delivery_date' => date('Y-m-d', strtotime($this->input->post('delivery_date'))),
+					// 'received_date' => date('Y-m-d', strtotime($this->input->post('received_date'))),
 					'created_at' => date('Y-m-d h:m:s')
 				);
 				$data = $this->security->xss_clean($data);

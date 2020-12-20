@@ -97,7 +97,7 @@ class Vendors extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            $this->form_validation->set_rules('username', 'Username', 'trim|is_unique[ci_admin.username]|required');
+            $this->form_validation->set_rules('username', 'Username', 'trim|is_unique[vendors.user_name]|required');
             $this->form_validation->set_rules('contact_name', 'Contact Name', 'trim|required');
             $this->form_validation->set_rules('other_contact', 'Other Contact', 'trim|required');
             $this->form_validation->set_rules('company_name', 'Company Name', 'trim|required');

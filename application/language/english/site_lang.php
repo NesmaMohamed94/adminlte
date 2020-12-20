@@ -274,6 +274,7 @@ $lang['branch_no'] = "Branch Number";
 $lang['branch_name'] = "Branch Name";
 $lang['edit_branch'] = "Edit Branch";
 $lang['add_branch'] = "Add Branch";
+
 //Teams
 $lang['teams'] = "Teams";
 $lang['team_list'] = "Teams List";
@@ -282,6 +283,18 @@ $lang['team_name'] = "Team Name";
 $lang['team_number'] = "Team Number";
 $lang['edit_team'] = "Edit Team";
 $lang['add_team'] = "Add Team";
+
+//Drivers
+$lang['drivers'] = "Drivers";
+$lang['driver_list'] = "Driver List";
+$lang['add_new_driver'] = "Add New Driver";
+$lang['driver_name'] = "Driver Name";
+$lang['first_name'] = "First Name";
+$lang['last_name'] = "Last Name";
+$lang['licence_plate'] = "Licence Plate";
+$lang['driver_number'] = "Driver Number";
+$lang['edit_driver'] = "Edit Driver";
+$lang['add_driver'] = "Add Driver";
 
 //Shipments
 $lang['shipments'] = "Shipments";
@@ -334,10 +347,11 @@ $lang['received_date'] = "Received Date";
 $lang['pickup'] = "Pickup";
 $lang['description'] = "Shipment Description";
 $lang['critical'] = "Critical";
+$lang['normal'] = "Normal";
 $lang['urgent'] = "Urgent";
 $lang['topurgent'] = "Top Urgent";
 $lang['cod'] = "Cash on Delivery";
-$lang['numpc'] = "PC number";
+$lang['numpc'] = "Number of PCs";
 $lang['weight'] = "Weight";
 $lang['dimension'] = "Dimension";
 $lang['vendor'] = "Vendor Name";

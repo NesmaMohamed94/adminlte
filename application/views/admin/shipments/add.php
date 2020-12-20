@@ -32,18 +32,21 @@
 							<!-- form start -->
 							<div class="card-body">
 								<div class="form-group">
-									<label for="dropoff_contact_name" class="control-label"><?=trans('dropoff_contact_name')?></label>
-									<input type="text" name="dropoff_contact_name" class="form-control" id="dropoff_contact_name"
-										placeholder="" required>
+									<label for="dropoff_contact_name"
+										class="control-label"><?=trans('dropoff_contact_name')?></label>
+									<input type="text" name="dropoff_contact_name" class="form-control"
+										id="dropoff_contact_name" placeholder="" required>
 								</div>
 
 								<div class="form-group">
-									<label for="dropoff_contact_number" class="control-label"><?=trans('dropoff_contact_number')?></label>
-									<input type="number" name="dropoff_contact_number" class="form-control" id="dropoff_contact_number"
-										placeholder="" required>
+									<label for="dropoff_contact_number"
+										class="control-label"><?=trans('dropoff_contact_number')?></label>
+									<input type="number" name="dropoff_contact_number" class="form-control"
+										id="dropoff_contact_number" placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="dropoff_addr_type" class="col-md-4 control-label"><?=trans('dropoff_addr_type')?></label>
+									<label for="dropoff_addr_type"
+										class="col-md-4 control-label"><?=trans('dropoff_addr_type')?></label>
 
 									<div class="col-md-12">
 										<select name="dropoff_addr_type" class="form-control">
@@ -56,46 +59,55 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="dropoff_address" class="control-label"><?=trans('dropoff_address')?></label>
-									<input type="text" name="dropoff_address" class="form-control" id="dropoff_address" placeholder="">
+									<label for="dropoff_address"
+										class="control-label"><?=trans('dropoff_address')?></label>
+									<input type="text" name="dropoff_address" class="form-control" id="dropoff_address"
+										placeholder="">
 								</div>
 								<div class="form-group">
 									<label for="dropoff_email" class="control-label"><?=trans('dropoff_email')?></label>
-									<input type="email" name="dropoff_email" class="form-control" id="dropoff_email" placeholder="">
+									<input type="email" name="dropoff_email" class="form-control" id="dropoff_email"
+										placeholder="">
 								</div>
 								<div class="form-group">
-									<label for="dropoff_country" class="control-label"><?=trans('dropoff_country')?></label>
-									<input type="text" name="dropoff_country" class="form-control" id="dropoff_country" placeholder=""
-										required>
+									<label for="dropoff_country"
+										class="control-label"><?=trans('dropoff_country')?></label>
+									<input type="text" name="dropoff_country" class="form-control" id="dropoff_country"
+										placeholder="" required>
 								</div>
 
 								<div class="form-group">
 									<label for="dropoff_city" class="control-label"><?=trans('dropoff_city')?></label>
-									<input type="text" name="dropoff_city" class="form-control" id="dropoff_city" placeholder="" required>
+									<input type="text" name="dropoff_city" class="form-control" id="dropoff_city"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
 									<label for="dropoff_dist" class="control-label"><?=trans('dropoff_dist')?></label>
-									<input type="text" name="dropoff_dist" class="form-control" id="dropoff_dist" placeholder="" required>
+									<input type="text" name="dropoff_dist" class="form-control" id="dropoff_dist"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="dropoff_street" class="control-label"><?=trans('dropoff_street')?></label>
-									<input type="text" name="dropoff_street" class="form-control" id="dropoff_street" placeholder=""
-										required>
+									<label for="dropoff_street"
+										class="control-label"><?=trans('dropoff_street')?></label>
+									<input type="text" name="dropoff_street" class="form-control" id="dropoff_street"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="dropoff_zipcode" class="control-label"><?=trans('dropoff_zipcode')?></label>
-									<input type="text" name="dropoff_zipcode" class="form-control" id="dropoff_zipcode" placeholder=""
-										required>
+									<label for="dropoff_zipcode"
+										class="control-label"><?=trans('dropoff_zipcode')?></label>
+									<input type="text" name="dropoff_zipcode" class="form-control" id="dropoff_zipcode"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="dropoff_building" class="control-label"><?=trans('dropoff_building')?></label>
-									<input type="text" name="dropoff_building" class="form-control" id="dropoff_building" placeholder=""
-										required>
+									<label for="dropoff_building"
+										class="control-label"><?=trans('dropoff_building')?></label>
+									<input type="text" name="dropoff_building" class="form-control"
+										id="dropoff_building" placeholder="" required>
 								</div>
 								<div class="form-group">
 									<label for="dropoff_extra" class="control-label"><?=trans('dropoff_extra')?></label>
-									<input type="text" name="dropoff_extra" class="form-control" id="dropoff_extra" placeholder=""
-										required>
+									<input type="text" name="dropoff_extra" class="form-control" id="dropoff_extra"
+										placeholder="" required>
 								</div>
 
 
@@ -114,15 +126,15 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label for="customer_name" class="control-label"><?=trans('customer_name')?></label>
-									<input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
-										required>
+									<input type="text" name="customer_name" class="form-control" id="customer_name"
+										placeholder="" required>
 								</div>
 
 								<div class="form-group">
 									<label for="customer_contact_number"
 										class="control-label"><?=trans('customer_contact_number')?></label>
-									<input type="number" name="customer_contact_number" class="form-control" id="customer_contact_number"
-										placeholder="" required>
+									<input type="number" name="customer_contact_number" class="form-control"
+										id="customer_contact_number" placeholder="" required>
 								</div>
 								<div class="form-group">
 									<label for="customer_addr_type"
@@ -139,48 +151,57 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="delivery_address" class="control-label"><?=trans('delivery_address')?></label>
-									<input type="text" name="delivery_address" class="form-control" id="delivery_address" placeholder="">
+									<label for="delivery_address"
+										class="control-label"><?=trans('delivery_address')?></label>
+									<input type="text" name="delivery_address" class="form-control"
+										id="delivery_address" placeholder="">
 								</div>
 								<div class="form-group">
-									<label for="customer_email" class="control-label"><?=trans('customer_email')?></label>
-									<input type="email" name="customer_email" class="form-control" id="customer_email" placeholder="">
+									<label for="customer_email"
+										class="control-label"><?=trans('customer_email')?></label>
+									<input type="email" name="customer_email" class="form-control" id="customer_email"
+										placeholder="">
 								</div>
 								<div class="form-group">
-									<label for="customer_country" class="control-label"><?=trans('customer_country')?></label>
-									<input type="text" name="customer_country" class="form-control" id="customer_country" placeholder=""
-										required>
+									<label for="customer_country"
+										class="control-label"><?=trans('customer_country')?></label>
+									<input type="text" name="customer_country" class="form-control"
+										id="customer_country" placeholder="" required>
 								</div>
 
 								<div class="form-group">
 									<label for="customer_city" class="control-label"><?=trans('customer_city')?></label>
-									<input type="text" name="customer_city" class="form-control" id="customer_city" placeholder=""
-										required>
+									<input type="text" name="customer_city" class="form-control" id="customer_city"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
 									<label for="customer_dist" class="control-label"><?=trans('customer_dist')?></label>
-									<input type="text" name="customer_dist" class="form-control" id="customer_dist" placeholder=""
-										required>
+									<input type="text" name="customer_dist" class="form-control" id="customer_dist"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="customer_street" class="control-label"><?=trans('customer_street')?></label>
-									<input type="text" name="customer_street" class="form-control" id="customer_street" placeholder=""
-										required>
+									<label for="customer_street"
+										class="control-label"><?=trans('customer_street')?></label>
+									<input type="text" name="customer_street" class="form-control" id="customer_street"
+										placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="customer_zipcode" class="control-label"><?=trans('customer_zipcode')?></label>
-									<input type="text" name="customer_zipcode" class="form-control" id="customer_zipcode" placeholder=""
-										required>
+									<label for="customer_zipcode"
+										class="control-label"><?=trans('customer_zipcode')?></label>
+									<input type="text" name="customer_zipcode" class="form-control"
+										id="customer_zipcode" placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="customer_building" class="control-label"><?=trans('customer_building')?></label>
-									<input type="text" name="customer_building" class="form-control" id="customer_building" placeholder=""
-										required>
+									<label for="customer_building"
+										class="control-label"><?=trans('customer_building')?></label>
+									<input type="text" name="customer_building" class="form-control"
+										id="customer_building" placeholder="" required>
 								</div>
 								<div class="form-group">
-									<label for="customer_extra" class="control-label"><?=trans('customer_extra')?></label>
-									<input type="text" name="customer_extra" class="form-control" id="customer_extra" placeholder=""
-										required>
+									<label for="customer_extra"
+										class="control-label"><?=trans('customer_extra')?></label>
+									<input type="text" name="customer_extra" class="form-control" id="customer_extra"
+										placeholder="" required>
 								</div>
 
 
@@ -194,7 +215,8 @@
 							<div class="card-body">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="trans_type" class="col-md-4 control-label"><?=trans('trans_type')?></label>
+										<label for="trans_type"
+											class="col-md-4 control-label"><?=trans('trans_type')?></label>
 										<div class="col-md-12">
 											<select name="trans_type" class="form-control">
 												<option value=""><?=trans('trans_type')?></option>
@@ -208,11 +230,19 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="description" class="col-md-4 control-label"><?=trans('description')?></label>
+										<label for="description" class="control-label"><?=trans('description')?></label>
+										<input type="number" name="description" class="form-control" id="description" placeholder=""
+											required>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="critical"
+											class="col-md-4 control-label"><?=trans('critical')?></label>
 										<div class="col-md-12">
-											<select name="description" class="form-control">
-												<option value=""><?=trans('description')?></option>
-												<option value="critical"><?=trans('critical')?>
+											<select name="critical" class="form-control">
+												<option value=""><?=trans('critical')?></option>
+												<option value="normal"><?=trans('normal')?>
 												</option>
 												<option value="urgent">
 													<?=trans('urgent')?></option>
@@ -225,7 +255,8 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="cod" class="control-label"><?=trans('cod')?></label>
-										<input type="number" name="cod" class="form-control" id="cod" placeholder="" required>
+										<input type="number" name="cod" class="form-control" id="cod" placeholder=""
+											required>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -235,7 +266,8 @@
 											<select name="vendor_id" class="form-control">
 												<option value=""><?=trans('vendor')?></option>
 												<?php foreach($vendors as $vendor){?>
-												<option value="<?= $vendor['id']; ?>"><?=$vendor['user_name'];?> </option>
+												<option value="<?= $vendor['id']; ?>"><?=$vendor['user_name'];?>
+												</option>
 												<?php }?>
 											</select>
 										</div>
@@ -245,12 +277,14 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="numpc" class="control-label"><?=trans('numpc')?></label>
-										<input type="number" name="numpc" class="form-control" id="numpc" placeholder="" required>
+										<input type="number" name="numpc" class="form-control" id="numpc" placeholder=""
+											required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="payment_type" class="col-md-4 control-label"><?=trans('payment_type')?></label>
+										<label for="payment_type"
+											class="col-md-4 control-label"><?=trans('payment_type')?></label>
 										<div class="col-md-12">
 											<select name="payment_type" class="form-control">
 												<option value=""><?=trans('payment_type')?></option>
@@ -265,66 +299,83 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="weight" class="control-label"><?=trans('weight')?></label>
-										<input type="number" name="weight" class="form-control" id="weight" placeholder="" required>
+										<input type="number" name="weight" class="form-control" id="weight"
+											placeholder="" required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="dimension" class="control-label"><?=trans('dimension')?></label>
-										<input type="text" name="dimension" class="form-control" id="dimension" placeholder="" required>
+										<input type="text" name="dimension" class="form-control" id="dimension"
+											placeholder="WxHxD" required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="reference" class="control-label"><?=trans('reference')?></label>
-										<input type="text" name="reference" class="form-control" id="reference" placeholder="" required>
+										<input type="text" name="reference" class="form-control" id="reference"
+											placeholder="" required>
 									</div>
 								</div>
+
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="currency" class="control-label"><?=trans('currency')?></label>
-										<input type="text" name="currency" class="form-control" id="currency" placeholder="" required>
+										<label for="currency"
+											class="col-md-4 control-label"><?=trans('currency')?></label>
+										<div class="col-md-12">
+											<select name="currency" class="form-control">
+												<option value=""><?=trans('currency')?></option>
+												<option value="sa">SA
+												</option>
+											</select>
+										</div>
 									</div>
 								</div>
+
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="live_time" class="control-label"><?=trans('live_time')?></label>
-										<input type="text" name="live_time" class="form-control" id="live_time" placeholder="" required>
+										<input type="text" name="live_time" class="form-control" id="live_time"
+											placeholder="" required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="note" class="control-label"><?=trans('note')?></label>
-										<input type="text" name="note" class="form-control" id="note" placeholder="" required>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label for="content" class="control-label"><?=trans('content')?></label>
-										<input type="text" name="content" class="form-control" id="content" placeholder="" required>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label for="declare_value" class="control-label"><?=trans('declare_value')?></label>
-										<input type="text" name="declare_value" class="form-control" id="declare_value" placeholder=""
+										<input type="text" name="note" class="form-control" id="note" placeholder=""
 											required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="insurance" class="control-label"><?=trans('insurance')?></label>
-										<input type="text" name="insurance" class="form-control" id="insurance" placeholder="" required>
+										<label for="content" class="control-label"><?=trans('content')?></label>
+										<input type="text" name="content" class="form-control" id="content"
+											placeholder="" required>
 									</div>
 								</div>
-                <div class="col-md-12">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="declare_value"
+											class="control-label"><?=trans('declare_value')?></label>
+										<input type="text" name="declare_value" class="form-control" id="declare_value"
+											placeholder="" required>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="insurance" class="control-label"><?=trans('insurance')?></label>
+										<input type="text" name="insurance" class="form-control" id="insurance"
+											placeholder="" required>
+									</div>
+								</div>
+								<!-- <div class="col-md-12">
                         <label for="date" class="control-label"><?= trans('delivery_date') ?></label>
                         <input type="text" name="delivery_date" class="form-control datepicker" id="billing_date" placeholder="" required>
-                      </div>
-                      <div class="col-md-12">
+                      </div> -->
+								<!-- <div class="col-md-12">
                         <label for="date" class="control-label"><?= trans('received_date') ?></label>
                           <input type="text" name="received_date" class="form-control datepicker" id="due_date" placeholder="" required>
-                      </div>
+                      </div> -->
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="vendor" class="col-md-4 control-label"><?=trans('branch')?></label>
@@ -332,7 +383,8 @@
 											<select name="branch_id" class="form-control">
 												<option value=""><?=trans('branch')?></option>
 												<?php foreach($branchs as $branch):?>
-												<option value="<?= $branch['id']; ?>"><?=$branch['branch_name'];?> </option>
+												<option value="<?= $branch['id']; ?>"><?=$branch['branch_name'];?>
+												</option>
 												<?php endforeach;?>
 											</select>
 										</div>
@@ -344,7 +396,8 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-body">
-								<input type="submit" name="submit" value="add Shipment" class="btn btn-primary pull-right">
+								<input type="submit" name="submit" value="add Shipment"
+									class="btn btn-primary pull-right">
 							</div>
 						</div>
 					</div>
@@ -435,7 +488,8 @@
 
 				var item_total = parseFloat(quantity * price) > 0 ? parseFloat(quantity * price) : 0;
 				sub_total += parseFloat(price * quantity) > 0 ? parseFloat(price * quantity) : 0;
-				total_tax += parseFloat(price * quantity * item_tax / 100) > 0 ? parseFloat(price * quantity * item_tax /
+				total_tax += parseFloat(price * quantity * item_tax / 100) > 0 ? parseFloat(price * quantity *
+					item_tax /
 					100) : 0;
 
 				$(this).find('.item_total').text(item_total.toFixed(2));
