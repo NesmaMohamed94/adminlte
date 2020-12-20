@@ -274,6 +274,14 @@ $lang['branch_no'] = "Branch Number";
 $lang['branch_name'] = "Branch Name";
 $lang['edit_branch'] = "Edit Branch";
 $lang['add_branch'] = "Add Branch";
+//Teams
+$lang['teams'] = "Teams";
+$lang['team_list'] = "Teams List";
+$lang['add_new_team'] = "Add New Team";
+$lang['team_name'] = "Team Name";
+$lang['team_number'] = "Team Number";
+$lang['edit_team'] = "Edit Team";
+$lang['add_team'] = "Add Team";
 
 //Shipments
 $lang['shipments'] = "Shipments";
