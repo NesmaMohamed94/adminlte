@@ -396,3 +396,20 @@ $lang['edit_vendor'] = "Edit Vendor";
 $lang['add_vendor'] = "Add Vendor";
 $lang['suspended'] = "suspended";
 $lang['pending'] = "Pending";
+
+//mainfest
+$lang['mainfest'] = "Mainfest";
+$lang['mainfest_header'] = "Mainfest Header";
+$lang['date'] = "Date";
+$lang['date'] = "Date";
+$lang['mainfest_list'] = "Mainfest List";
+$lang['received_from_vendor'] = "Received from Vendor";
+$lang['return_to_vendor'] = "Return to Vendor";
+$lang['received_from_branch'] = "Received from Branch";
+$lang['return_to_branch'] = "Return to Branch";
+$lang['received_from_driver'] = "Received from driver";
+$lang['return_to_driver'] = "Return to driver";
+$lang['type'] = "Type";
+$lang['to_from'] = "To/From";
+$lang['to_from_id'] = "To/From Name";
+$lang['note'] = "note";

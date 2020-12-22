@@ -28,71 +28,79 @@
 		// Add New Invoices
 		public function add()
 		{
-			$this->rbac->check_operation_access(); // check opration permission
+			$items_detail =  array(
+				'product_description' => $this->input->post('product_description'),
+				'quantity' => $this->input->post('quantity'),
+				'price' => $this->input->post('price'),
+				'tax' => $this->input->post('tax'),
+				'total' => $this->input->post('total'),
+			);
+			print_r($items_detail);
+			// $this->rbac->check_operation_access(); // check opration permission
 
-			if($this->input->post('submit')){
-				$data['company_data'] = array(
-					'name' => $this->input->post('company_name'),
-					'address1' => $this->input->post('company_address_1'),
-					'address2' => $this->input->post('company_address_2'),
-					'email' => $this->input->post('company_email'),
-					'mobile_no' => $this->input->post('company_mobile_no'),
-					'created_date' => date('Y-m-d h:m:s')
-				);
-				$data = $this->security->xss_clean($data['company_data']);
-				$company_id = $this->invoice_model->add_company($data);
-				if($company_id){
-					$items_detail =  array(
-							'product_description' => $this->input->post('product_description'),
-							'quantity' => $this->input->post('quantity'),
-							'price' => $this->input->post('price'),
-							'tax' => $this->input->post('tax'),
-							'total' => $this->input->post('total'),
-						);
-					$items_detail = serialize($items_detail);
+			// if($this->input->post('submit')){
+			// 	$data['company_data'] = array(
+			// 		'name' => $this->input->post('company_name'),
+			// 		'address1' => $this->input->post('company_address_1'),
+			// 		'address2' => $this->input->post('company_address_2'),
+			// 		'email' => $this->input->post('company_email'),
+			// 		'mobile_no' => $this->input->post('company_mobile_no'),
+			// 		'created_date' => date('Y-m-d h:m:s')
+			// 	);
+			// 	$data = $this->security->xss_clean($data['company_data']);
+			// 	$company_id = $this->invoice_model->add_company($data);
+			// 	if($company_id){
+			// 		$items_detail =  array(
+			// 				'product_description' => $this->input->post('product_description'),
+			// 				'quantity' => $this->input->post('quantity'),
+			// 				'price' => $this->input->post('price'),
+			// 				'tax' => $this->input->post('tax'),
+			// 				'total' => $this->input->post('total'),
+			// 			);
+			// 		$items_detail = serialize($items_detail);
 
-					$data['invoice_data'] = array(
+			// 		$data['invoice_data'] = array(
 
-						'admin_id' => $this->session->userdata('admin_id'),
-						'user_id' => $this->input->post('user_id'),
-						'company_id' => $company_id,
-						'invoice_no' => $this->input->post('invoice_no'),
-						'txn_id' => '',
-						'items_detail' => $items_detail,
-						'sub_total' => $this->input->post('sub_total'),
-						'total_tax' => $this->input->post('total_tax'),
-						'discount' => $this->input->post('discount'),
-						'grand_total' => $this->input->post('grand_total'),
-						'currency ' => 'USD',
-						'payment_method' => '',
-						'payment_status ' => $this->input->post('payment_status'),
-						'client_note ' => $this->input->post('client_note'),
-						'termsncondition ' => $this->input->post('termsncondition'),
-						'due_date' => date('Y-m-d', strtotime($this->input->post('due_date'))),
-						'created_date' => date('Y-m-d', strtotime($this->input->post('billing_date'))),
-					);
+			// 			'admin_id' => $this->session->userdata('admin_id'),
+			// 			'user_id' => $this->input->post('user_id'),
+			// 			'company_id' => $company_id,
+			// 			'invoice_no' => $this->input->post('invoice_no'),
+			// 			'txn_id' => '',
+			// 			'items_detail' => $items_detail,
+			// 			'sub_total' => $this->input->post('sub_total'),
+			// 			'total_tax' => $this->input->post('total_tax'),
+			// 			'discount' => $this->input->post('discount'),
+			// 			'grand_total' => $this->input->post('grand_total'),
+			// 			'currency ' => 'USD',
+			// 			'payment_method' => '',
+			// 			'payment_status ' => $this->input->post('payment_status'),
+			// 			'client_note ' => $this->input->post('client_note'),
+			// 			'termsncondition ' => $this->input->post('termsncondition'),
+			// 			'due_date' => date('Y-m-d', strtotime($this->input->post('due_date'))),
+			// 			'created_date' => date('Y-m-d', strtotime($this->input->post('billing_date'))),
+			// 		);
 
-					$invoice_data = $this->security->xss_clean($data['invoice_data']);
+			// 		$invoice_data = $this->security->xss_clean($data['invoice_data']);
 
-					$result = $this->invoice_model->add_invoice($invoice_data);
-					if($result){
-						// Activity Log 
-						$this->activity_model->add_log(7);
+			// 		$result = $this->invoice_model->add_invoice($invoice_data);
+			// 		if($result){
+			// 			// Activity Log 
+			// 			$this->activity_model->add_log(7);
 
-						$this->session->set_flashdata('success', 'Invoice has been Added Successfully!');
-						redirect(base_url('admin/invoices'));
-					}
-				}	
-				//print_r($data['invoice_data']);
-			}
-			else{
-				$data['title'] = 'Invoice';
-				$data['customer_list'] = $this->invoice_model->get_customer_list();
+			// 			$this->session->set_flashdata('success', 'Invoice has been Added Successfully!');
+			// 			redirect(base_url('admin/invoices'));
+			// 		}
+			// 	}	
+			// 	//print_r($data['invoice_data']);
+			// }
+			// else{
+				// $data['title'] = 'Invoice';
+				// $data['customer_list'] = $this->invoice_model->get_customer_list();
 
-				$this->load->view('admin/includes/_header');
-        		$this->load->view('admin/invoices/invoice_add', $data);
-        		$this->load->view('admin/includes/_footer');
-			}
+				// $this->load->view('admin/includes/_header');
+        		// $this->load->view('admin/invoices/invoice_add', $data);
+        		// $this->load->view('admin/includes/_footer');
+			// }
 			
 		}
 
