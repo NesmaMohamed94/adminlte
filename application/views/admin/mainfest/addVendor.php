@@ -45,12 +45,12 @@
 								<div class="form-group">
 									<label for="type" class="control-label"><?= trans('type') ?></label>
 									<input type="text" name="type" class="form-control" id="type" value="in"
-										placeholder="" required>
+										placeholder="" readOnly>
 								</div>
 								<div class="form-group">
 									<label for="to_from" class="control-label"><?= trans('to_from') ?></label>
 									<input type="text" name="to_from" class="form-control" id="to_from" value="vendor"
-										placeholder="" required>
+										placeholder="" readOnly>
 								</div>
 								<div class="form-group">
 									<label for="to_from_id" class="control-label"><?= trans('to_from_id') ?></label>
