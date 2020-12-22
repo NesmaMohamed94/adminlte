@@ -275,6 +275,18 @@ $lang['branch_name'] = "Branch Name";
 $lang['edit_branch'] = "Edit Branch";
 $lang['add_branch'] = "Add Branch";
 
+//Warehouses
+$lang['warehouses'] = "Warehouses";
+$lang['warehouse_list'] = "Warehouse List";
+$lang['add_new_warehouse'] = "Add New Warehouse";
+$lang['warehouse_no'] = "Warehouse Number";
+$lang['warehouse_name'] = "Warehouse Name";
+$lang['edit_warehouse'] = "Edit Warehouse";
+$lang['add_warehouse'] = "Add Warehouse";
+$lang['warehouse_no'] = "Warehouse Number";
+$lang['warehouse_name'] = "Warehouse Name";
+$lang['warehouse_location'] = "Warehouse Location";
+
 //Teams
 $lang['teams'] = "Teams";
 $lang['team_list'] = "Teams List";
