@@ -7,7 +7,7 @@
             $this->db->insert('mainfest_header', $data);
              $this->db->from("mainfest_header");
              $this->db->order_by('id', 'desc');
-            return  $this->db->get()->row()->id;
+            return  $this->db->get()->row()->header_id;
 		}
 
 		//---------------------------------------------------
@@ -34,7 +34,7 @@
 					mainfest.id'
 	    	);
 	    	$this->db->from('mainfest_header');
-	    	$this->db->join('mainfest', 'mainfest_header.id = mainfest.mainfest_id');
+	    	$this->db->join('mainfest', 'mainfest_header.header_id = mainfest.mainfest_id');
 	    	$this->db->join('warehouses', 'warehouses.warehouse_no = mainfest_header.warehouse_no');
 	    	$this->db->join('vendors', 'vendors.id = mainfest_header.to_from_id');
 	    	$this->db->join('ci_admin', 'ci_admin.admin_id = mainfest_header.created_by');

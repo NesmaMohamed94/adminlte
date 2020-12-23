@@ -12,7 +12,7 @@
               &nbsp; <?= trans('mainfest_list') ?> </h3>
           </div>
           <div class="d-inline-block float-right">
-            <a href="<?= base_url('admin/mainfest/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i><?= trans('add_new_invoice') ?> </a>
+            <a href="<?= base_url('admin/mainfest/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i><?= trans('add_new_mainfest') ?> </a>
           </div>
         </div>
         <div class="card-body table-responsive">

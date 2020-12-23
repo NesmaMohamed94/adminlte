@@ -21,7 +21,7 @@
 				<!-- For Messages -->
 				<?php $this->load->view('admin/includes/_messages.php') ?>
 
-				<?php echo form_open( base_url('admin/mainfest/add')); ?>
+				<?php echo form_open( base_url('admin/mainfest/add_driver')); ?>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="card">
@@ -50,16 +50,16 @@
 								</div>
 								<div class="form-group">
 									<label for="to_from" class="control-label"><?= trans('to_from') ?></label>
-									<input type="text" name="to_from" class="form-control" id="to_from" value="vendor"
+									<input type="text" name="to_from" class="form-control" id="to_from" value="driver"
 										placeholder="" readOnly>
 								</div>
 								<div class="form-group">
 									<label for="to_from_id" class="control-label"><?= trans('to_from_id') ?></label>
 									<select class="form-control" name="to_from_id" id="to_from_id" required="">
-										<option value="">Please Select Vendor</option>
-										<?php foreach ($vendors as $vendor): ?>
-										<option value="<?= $vendor['id'] ?>">
-											<?= $vendor['user_name'] ?></option>
+										<option value="">Please Select Drives</option>
+										<?php foreach ($drivers as $driver): ?>
+										<option value="<?= $driver['driver_id'] ?>">
+											<?= $driver['first_name'] ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
@@ -158,6 +158,7 @@
 
 			$("#scan").keyup(function (e) {
 				var code = e.which;
+				console.log(code);
 				if (code == 13) {
 					e.preventDefault();
 					var scan = $(this).val();
