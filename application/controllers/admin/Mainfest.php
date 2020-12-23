@@ -37,51 +37,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -102,51 +110,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -167,51 +183,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -232,51 +256,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -297,51 +329,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -362,51 +402,59 @@ class Mainfest extends MY_Controller
         $this->rbac->check_operation_access(); // check opration permission
 
         if ($this->input->post('submit')) {
-            if ($this->session->userdata('user_id') != '') {
-                $created_by = $this->session->userdata('user_id');
-
-            } else {
-                $created_by = $this->session->userdata('admin_id');
-
-            }
-            $data['mainfest_header'] = array(
-                'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
-                'warehouse_no' => $this->input->post('warehouse_no'),
-                'created_by' => $created_by,
-                'to_from_id' => $this->input->post('to_from_id'),
-                'to_from' => $this->input->post('to_from'),
-                'type' => $this->input->post('type'),
-                'note' => $this->input->post('note'),
-                'created_at' => date('Y-m-d h:m:s'),
-            );
-            $data = $this->security->xss_clean($data['mainfest_header']);
-            $mainfest_id = $this->mainfest->add_mainfest_header($data);
-            if ($mainfest_id) {
-                $shipment_id = $this->input->post('product_description');
-                $data['mainfest'] = array(
-                    'vshipment_id' => $this->input->post('product_description'),
-                    'mainfest_id' => $mainfest_id,
+            if (empty($this->input->post('product_description'))) {
+                $data = array(
+                    'errors' => "AWB# is required",
                 );
-                $mainfest = serialize($mainfest);
+                $this->session->set_flashdata('errors', $data['errors']);
+                redirect(base_url('admin/mainfest'), 'refresh');
+            } else {
+                if ($this->session->userdata('user_id') != '') {
+                    $created_by = $this->session->userdata('user_id');
 
-                $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                foreach ($shipment_id as $value) {
+                } else {
+                    $created_by = $this->session->userdata('admin_id');
+
+                }
+                $data['mainfest_header'] = array(
+                    'header_id' => "TMX-" . date('m') . date('d') . "-" . random_string('numeric', 4),
+                    'warehouse_no' => $this->input->post('warehouse_no'),
+                    'created_by' => $created_by,
+                    'to_from_id' => $this->input->post('to_from_id'),
+                    'to_from' => $this->input->post('to_from'),
+                    'type' => $this->input->post('type'),
+                    'note' => $this->input->post('note'),
+                    'created_at' => date('Y-m-d h:m:s'),
+                );
+                $data = $this->security->xss_clean($data['mainfest_header']);
+                $mainfest_id = $this->mainfest->add_mainfest_header($data);
+                if ($mainfest_id) {
+                    $shipment_id = $this->input->post('product_description');
                     $data['mainfest'] = array(
-                        'vshipment_id' => $value,
+                        'vshipment_id' => $this->input->post('product_description'),
                         'mainfest_id' => $mainfest_id,
                     );
                     $mainfest = serialize($mainfest);
 
                     $mainfest_data = $this->security->xss_clean($data['mainfest']);
-                    $result = $this->mainfest->add_mainfest($mainfest_data);
+                    foreach ($shipment_id as $value) {
+                        $data['mainfest'] = array(
+                            'vshipment_id' => $value,
+                            'mainfest_id' => $mainfest_id,
+                        );
+                        $mainfest = serialize($mainfest);
+
+                        $mainfest_data = $this->security->xss_clean($data['mainfest']);
+                        $result = $this->mainfest->add_mainfest($mainfest_data);
+                    }
+
+                    // Activity Log
+                    $this->activity_model->add_log(7);
+
+                    $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
+                    redirect(base_url('admin/mainfest'));
+
                 }
-
-                // Activity Log
-                $this->activity_model->add_log(7);
-
-                $this->session->set_flashdata('success', 'Mainfest has been Added Successfully!');
-                redirect(base_url('admin/mainfest'));
-
             }
             //print_r($data['invoice_data']);
         } else {
@@ -420,8 +468,6 @@ class Mainfest extends MY_Controller
         }
 
     }
-
-
 
     //---------------------------------------------------
     // Get View Invoice

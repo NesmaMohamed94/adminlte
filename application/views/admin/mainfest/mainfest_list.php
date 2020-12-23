@@ -15,6 +15,7 @@
             <a href="<?= base_url('admin/mainfest/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i><?= trans('add_new_mainfest') ?> </a>
           </div>
         </div>
+        <?php $this->load->view('admin/includes/_messages.php') ?>
         <div class="card-body table-responsive">
           <table id="example1" class="table table-bordered table-striped ">
           <thead>
