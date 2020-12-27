@@ -57,7 +57,7 @@ class Teams extends MY_Controller
 					$result = $this->team->add_team($data);
 					if($result){
 						// Activity Log 
-						$this->activity_model->add_log(4);
+						$this->activity_model->add_log(18);
 						$this->session->set_flashdata('success', 'Team has been added successfully!');
 						redirect(base_url('admin/teams'));
 					}
@@ -93,7 +93,7 @@ class Teams extends MY_Controller
 
 				if($result){
 					// Activity Log 
-					$this->activity_model->add_log(5);
+					$this->activity_model->add_log(19);
 					$this->session->set_flashdata('success', 'Team has been updated successfully!');
 					redirect(base_url('admin/teams'));
 				}

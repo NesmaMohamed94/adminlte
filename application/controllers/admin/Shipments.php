@@ -87,7 +87,7 @@
                 if ($result) {
 
                     // Activity Log
-                    $this->activity_model->add_log(4);
+                    $this->activity_model->add_log(16);
                     $this->session->set_flashdata('success', 'Shipment has been added successfully!');
                     redirect(base_url('admin/shipments'));
                 }
@@ -139,7 +139,7 @@
 					$result = $this->shipment->update_shipment($shipment_data, $id);
 					if($result){
 						// Activity Log 
-						$this->activity_model->add_log(8);
+						$this->activity_model->add_log(17);
 						$this->session->set_flashdata('success', 'Shipment has been updated Successfully!');
 						redirect(base_url('admin/shipments/edit/'.$id));
 					}

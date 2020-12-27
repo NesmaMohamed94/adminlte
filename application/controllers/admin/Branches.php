@@ -59,7 +59,7 @@ class Branches extends MY_Controller
 					$result = $this->branch->add_branch($data);
 					if($result){
 						// Activity Log 
-						$this->activity_model->add_log(4);
+						$this->activity_model->add_log(12);
 						$this->session->set_flashdata('success', 'Branch has been added successfully!');
 						redirect(base_url('admin/branches'));
 					}
@@ -97,7 +97,7 @@ class Branches extends MY_Controller
 
 				if($result){
 					// Activity Log 
-					$this->activity_model->add_log(5);
+					$this->activity_model->add_log(13);
 					$this->session->set_flashdata('success', 'Branch has been updated successfully!');
 					redirect(base_url('admin/branches'));
 				}

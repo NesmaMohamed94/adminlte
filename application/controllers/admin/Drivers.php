@@ -70,7 +70,7 @@ class Drivers extends MY_Controller
                 if ($result) {
 
                     // Activity Log
-                    $this->activity_model->add_log(4);
+                    $this->activity_model->add_log(20);
                     $this->session->set_flashdata('success', 'Driver has been added successfully!');
                     redirect(base_url('admin/drivers'));
                 }
@@ -123,7 +123,7 @@ class Drivers extends MY_Controller
 
                 if ($result) {
                     // Activity Log
-                    $this->activity_model->add_log(5);
+                    $this->activity_model->add_log(21);
 
                     $this->session->set_flashdata('success', 'Driver has been updated successfully!');
                     redirect(base_url('admin/drivers'));
@@ -150,7 +150,7 @@ class Drivers extends MY_Controller
             redirect('admin/drivers');
         } else {
             $data['driver'] = $this->driver->get_driver_by_id($id);
-
+            $this->activity_model->add_log(21);
             $this->load->view('admin/includes/_header');
             $this->load->view('admin/drivers/view', $data);
             $this->load->view('admin/includes/_footer');

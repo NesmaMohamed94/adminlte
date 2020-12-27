@@ -77,7 +77,7 @@ class Vendors extends MY_Controller
                 if ($result) {
 
                     // Activity Log
-                    $this->activity_model->add_log(4);
+                    $this->activity_model->add_log(14);
 
                     $this->session->set_flashdata('success', 'Vendor has been added successfully!');
                     redirect(base_url('admin/vendors'));
@@ -137,7 +137,7 @@ class Vendors extends MY_Controller
 
                 if ($result) {
                     // Activity Log
-                    $this->activity_model->add_log(5);
+                    $this->activity_model->add_log(15);
 
                     $this->session->set_flashdata('success', 'Vendor has been updated successfully!');
                     redirect(base_url('admin/vendors'));
