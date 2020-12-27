@@ -92,6 +92,15 @@
 			$this->db->where('id', $id);
 			return $this->db->update('ci_payments', $data);
 		}
+		//---------------------------------------------------
+		// Delete mainfest
+		public function delete($id){
+			$this->db->where("id",$id);
+			$this->db->from("mainfest");
+			$header_id = $this->db->get()->row()->mainfest_id;
+			$this->db->delete('mainfest', array('id' => $id));
+			$this->db->delete('mainfest_header', array('header_id' => $header_id));
+		}
 
 		//---------------------------------------------------
 		// Update Customer Detail in invoice

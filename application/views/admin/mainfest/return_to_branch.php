@@ -32,7 +32,8 @@
 							<!-- form start -->
 							<div class="card-body">
 								<div class="form-group">
-									<label for="warehouse_no" class="control-label"><?= trans('warehouse_name') ?></label>
+									<label for="warehouse_no"
+										class="control-label"><?= trans('warehouse_name') ?></label>
 									<select class="form-control" name="warehouse_no" id="warehouse_name" required="">
 										<option value="">Please Select Warehouse</option>
 										<?php foreach ($warehouses as $warehouse): ?>
@@ -65,7 +66,7 @@
 								<div class="form-group">
 									<label for="note" class="control-label"><?= trans('note') ?></label>
 									<input type="text" name="note" class="form-control" id="note" value=""
-										placeholder="" >
+										placeholder="">
 								</div>
 							</div>
 							<!-- /.card-body -->
@@ -73,15 +74,15 @@
 					</div>
 					<div class="col-md-12">
 						<div class="card">
-						<div> 
-						<div class="input-group mb-3">
-							  <div class="input-group-prepend">
-    							<span class="input-group-text">Scan</span>
-  							  </div>
-  							<input type="text" id="scan" class="form-control" placeholder="#awb">
-						</div>
-						</div>
-							<div class="card-body">							    
+							<div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text">Scan</span>
+									</div>
+									<input type="text" id="scan" class="form-control" placeholder="#awb">
+								</div>
+							</div>
+							<div class="card-body">
 								<table class="table">
 									<thead>
 										<tr>
@@ -90,7 +91,7 @@
 										</tr>
 									</thead>
 									<tbody class="field_wrapper">
-										
+
 									</tbody>
 								</table>
 							</div>
@@ -116,64 +117,68 @@
 	<!-- bootstrap datepicker -->
 	<script src="<?= base_url() ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 	<script>
-	$( document ).ready(function() 
-	{
-        $(window).keydown(function (event) {
+		$(document).ready(function () {
+			$(window).keydown(function (event) {
 				if (event.keyCode == 13) {
 					event.preventDefault();
 					return false;
 				}
 			});
-		$('.datepicker').datepicker({
-			autoclose: true
+			$('.datepicker').datepicker({
+				autoclose: true
+			});
+
+			//---------------------------------------------------------------
+			//$(document).on("click change paste keyup", ".calcEvent", function() {
+			//  calculate_total();
+			//console.log("Hello world!"); 
+			//});
+
+			var max_field = 10;
+			var add_button = $('.add_button');
+			var wrapper = $('.field_wrapper');
+			var html_fields =
+				'<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" class="form-control calcEvent" id="product_description" placeholder="AWB#" required> </div> </td> <td> <div class="form-group"> </td> </tr>';
+
+			var x = 1; // 
+
+			$(add_button).click(function () {
+				if (x < max_field) {
+					x++;
+					$(wrapper).append(html_fields);
+				}
+
+			});
+
+			$(wrapper).on('click', '.remove_button', function (e) {
+				e.preventDefault();
+				$(this).closest('tr').remove(); //Remove field html
+				x--; //Decrement field counter
+			});
+
+			$("#scan").keyup(function (e) {
+				var code = e.which;
+				console.log(code);
+				if (code == 13) {
+					e.preventDefault();
+					var scan = $(this).val();
+					if (scan.trim() !== "") {
+						var html_fields =
+							'<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" value="' +
+							scan +
+							'" class="form-control" id="product_description" placeholder="AWB#" readonly> </div> </td> <td> <div class="form-group"> </td> </tr>';
+						$(wrapper).append(html_fields);
+						$(this).val('');
+					}
+
+				}
+			});
+
+			// $("form").on('submit',function(e){
+			// e.preventDefault();
+			//ajax code here
+			// });
+
 		});
 
-      //---------------------------------------------------------------
-      //$(document).on("click change paste keyup", ".calcEvent", function() {
-      //  calculate_total();
-	  //console.log("Hello world!"); 
-      //});
-
-      var max_field = 10;
-      var add_button = $('.add_button');
-      var wrapper = $('.field_wrapper');
-      var html_fields = '<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" class="form-control calcEvent" id="product_description" placeholder="AWB#" required> </div> </td> <td> <div class="form-group"> </td> </tr>';
-
-      var x = 1; // 
-
-      $(add_button).click(function(){
-        if(x < max_field){
-          x++;
-          $(wrapper).append(html_fields);
-        }
-
-      });
-
-      $(wrapper).on('click', '.remove_button', function(e){
-        e.preventDefault();
-        $(this).closest('tr').remove(); //Remove field html
-        x--; //Decrement field counter
-      });
-
-	$("#scan").keyup(function(e)
-	{ 
-    var code = e.which; 
-	console.log(code); 
-    if(code==13)
-     {
-      e.preventDefault();
-      var scan       = $(this).val();
-	  var html_fields = '<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" value="'+scan+'" class="form-control" id="product_description" placeholder="AWB#" readonly> </div> </td> <td> <div class="form-group"> </td> </tr>';
-	  $(wrapper).append(html_fields);
-      $(this).val('');
-	  //alert(scan)      
-     }
-	});
-
-	// $("form").on('submit',function(e){
-    // e.preventDefault();
-    //ajax code here
-// });
-
-	});
 	</script>

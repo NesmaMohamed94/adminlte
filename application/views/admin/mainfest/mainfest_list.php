@@ -26,7 +26,7 @@
             <th><?= trans('to_from') ?> </th>
             <th><?= trans('to_from_id') ?> </th>
   		      <th><?= trans('warehouse_name') ?> </th>
-            <!-- <th width="150" class="text-right"><?= trans('action') ?> </th> -->
+            <th width="150" ><?= trans('action') ?> </th>
             
           </tr>
           </thead>
@@ -39,12 +39,12 @@
               <td><?= $data['to_from'] ?></td>
               <td><?= $data['user_name'] ?></td>
               <td><?= $data['warehouse_name'] ?></td>
-              <!-- <td><div class="btn-group pull-right">
-                <a href="<?= base_url('admin/invoices/view/'.$data['id']); ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+              <td><div class="btn-group">
+                <!-- <a href="<?= base_url('admin/invoices/view/'.$data['id']); ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
                 <a href="<?= base_url('admin/invoices/invoice_pdf_download/'.$data['id']); ?>" class="btn btn-primary"><i class="fa fa-download"></i></a>
-                <a href="<?= base_url('admin/invoices/edit/'.$data['id']); ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                <a href="<?= base_url('admin/invoices/del/'.$data['id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
-              </div></td> -->
+                <a href="<?= base_url('admin/invoices/edit/'.$data['id']); ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a> -->
+                <a href="<?= base_url('admin/mainfest/delete/'.$data['id']); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+              </div></td>
   		      </tr>
             <?php endforeach; ?>
           </tbody>

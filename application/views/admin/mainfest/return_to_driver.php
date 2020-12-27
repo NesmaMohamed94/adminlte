@@ -162,12 +162,16 @@
 				if (code == 13) {
 					e.preventDefault();
 					var scan = $(this).val();
-					var html_fields =
-						'<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" value="' +
-						scan +
-						'" class="form-control" id="product_description" placeholder="AWB#" readonly> </div> </td> <td> <div class="form-group"> </td> </tr>';
-					$(wrapper).append(html_fields);
-					$(this).val('');
+
+					if (scan.trim() !== "") {
+						var html_fields =
+							'<tr class="item"><td> <a href="javascript:void(0);" class="remove_button btn btn-sm btn-danger" title="Remove field"><i class="fa fa-minus"></i></a> </td> <td> <div class="form-group"> <input type="text" name="product_description[]" value="' +
+							scan +
+							'" class="form-control" id="product_description" placeholder="AWB#" readonly> </div> </td> <td> <div class="form-group"> </td> </tr>';
+						$(wrapper).append(html_fields);
+						$(this).val('');
+					}
+
 					//alert(scan)      
 				}
 			});
