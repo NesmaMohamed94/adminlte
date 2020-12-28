@@ -26,7 +26,7 @@
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-header with-border">
-								<h3 class="card-title"><?= trans('mainfest_header') ?></h3>
+								<h3 class="card-title"><?= trans('received_from_vendor') ?></h3>
 							</div>
 							<!-- /.card-header -->
 							<!-- form start -->
